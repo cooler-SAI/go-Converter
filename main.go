@@ -5,11 +5,22 @@ import (
 	"fmt"
 	"go-Converter/engine"
 	"os"
+	"os/signal"
 	"strconv"
 	"strings"
+	"syscall"
 )
 
 func main() {
+	signs := make(chan os.Signal, 1)
+	signal.Notify(signs, syscall.SIGINT, syscall.SIGTERM)
+
+	go func() {
+		<-signs
+		fmt.Println("Program Closed!")
+		os.Exit(0)
+	}()
+
 	fmt.Println("Hello! Welcome to the Converter!")
 	fmt.Println("Please enter your conversion query in the format: <amount> <FROM_CURRENCY> to <TO_CURRENCY>")
 	fmt.Println("You can convert between currencies like USD, EUR, RUB, GBP.")
