@@ -12,7 +12,13 @@ import (
 func main() {
 	fmt.Println("Hello! Welcome to the Converter!")
 	fmt.Println("Please enter your conversion query in the format: <amount> <FROM_CURRENCY> to <TO_CURRENCY>")
-	fmt.Println("For example: 100 EUR to RUB")
+	fmt.Println("You can convert between currencies like USD, EUR, RUB, GBP.")
+	fmt.Println("-----------------------------------------------")
+	fmt.Println("For example: 100 USD to EUR")
+	fmt.Println("For example: 50 EUR to RUB")
+	fmt.Println("For example: 1000 RUB to USD")
+	fmt.Println("For example: 20 GBP to USD")
+	fmt.Println("-----------------------------------------------")
 	fmt.Println("Type 'exit' or 'quit' to close the application.")
 
 	scanner := bufio.NewScanner(os.Stdin)
