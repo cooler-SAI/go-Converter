@@ -4,22 +4,15 @@ import (
 	"bufio"
 	"fmt"
 	"go-Converter/engine"
+	"go-Converter/tools"
 	"os"
-	"os/signal"
 	"strconv"
 	"strings"
-	"syscall"
 )
 
 func main() {
-	signs := make(chan os.Signal, 1)
-	signal.Notify(signs, syscall.SIGINT, syscall.SIGTERM)
 
-	go func() {
-		<-signs
-		fmt.Println("Program Closed!")
-		os.Exit(0)
-	}()
+	tools.ListenForGracefulShutdown()
 
 	fmt.Println("Hello! Welcome to the Converter!")
 	fmt.Println("Please enter your conversion query in the format: <amount> <FROM_CURRENCY> to <TO_CURRENCY>")
